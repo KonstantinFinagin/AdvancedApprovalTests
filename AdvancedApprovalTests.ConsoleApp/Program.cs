@@ -1,4 +1,5 @@
 ﻿using System;
+using AdvancedApprovalTests.BL.Services;
 
 namespace AdvancedApprovalTests.ConsoleApp
 {
@@ -6,7 +7,8 @@ namespace AdvancedApprovalTests.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            // Here some DI should be, but we omit it for the sake of brevity
+            
         }
     }
 }

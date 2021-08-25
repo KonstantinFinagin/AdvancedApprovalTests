@@ -5,8 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Mappings\" />
-    <Folder Include="Logic\" />
+    <Compile Remove="Helpers\**" />
+    <Compile Remove="Mappings\**" />
+    <EmbeddedResource Remove="Helpers\**" />
+    <EmbeddedResource Remove="Mappings\**" />
+    <None Remove="Helpers\**" />
+    <None Remove="Mappings\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AdvancedApprovalTests.Contracts\AdvancedApprovalTests.Contracts.csproj" />
+    <ProjectReference Include="..\AdvancedApprovalTests.DAL\AdvancedApprovalTests.DAL.csproj" />
+    <ProjectReference Include="..\AdvancedApprovalTests.Domain\AdvancedApprovalTests.Domain.csproj" />
   </ItemGroup>
 
 </Project>

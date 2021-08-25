@@ -5,8 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="UnitOfWork\" />
-    <Folder Include="Repositories\" />
+    <ProjectReference Include="..\AdvancedApprovalTests.Domain\AdvancedApprovalTests.Domain.csproj" />
   </ItemGroup>
 
 </Project>
