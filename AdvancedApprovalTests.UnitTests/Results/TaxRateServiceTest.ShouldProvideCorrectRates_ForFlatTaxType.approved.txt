@@ -1,0 +1,8 @@
+﻿[
+  {
+    "Id": 1,
+    "MinAmount": null,
+    "MaxAmount": null,
+    "Rate": 0.13
+  }
+]
