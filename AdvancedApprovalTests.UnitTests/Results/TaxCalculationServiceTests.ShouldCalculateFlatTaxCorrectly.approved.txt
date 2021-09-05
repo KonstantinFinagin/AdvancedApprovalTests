@@ -1,0 +1,23 @@
+﻿{
+  "Result": [
+    {
+      "EmployeeId": 1,
+      "CalculatedTax": [
+        {
+          "Item1": 68200.0,
+          "Item2": 6820.00
+        }
+      ],
+      "TotalTax": 6820.00
+    }
+  ],
+  "Id": 1,
+  "Exception": null,
+  "Status": 5,
+  "IsCanceled": false,
+  "IsCompleted": true,
+  "IsCompletedSuccessfully": true,
+  "CreationOptions": 0,
+  "AsyncState": null,
+  "IsFaulted": false
+}

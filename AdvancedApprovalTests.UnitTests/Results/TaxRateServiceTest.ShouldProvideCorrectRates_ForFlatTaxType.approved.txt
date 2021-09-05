@@ -1,8 +1,8 @@
 ﻿[
   {
     "Id": 1,
-    "MinAmount": null,
-    "MaxAmount": null,
+    "MinAmount": 0.0,
+    "MaxAmount": 79228162514264337593543950335.0,
     "Rate": 0.13
   }
 ]

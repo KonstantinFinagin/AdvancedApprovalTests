@@ -6,12 +6,20 @@ using AdvancedApprovalTests.DAL.Repositories;
 using AdvancedApprovalTests.DAL.UnitOfWork;
 using AdvancedApprovalTests.Domain;
 using AdvancedApprovalTests.UnitTests.SampleData;
+using ApprovalTests.Namers;
+using ApprovalTests.Reporters;
 using Moq;
 using Newtonsoft.Json;
 using Xunit;
 
 namespace AdvancedApprovalTests.UnitTests
 {
+#if DEBUG
+    [UseReporter(typeof(DiffReporter))]
+#else
+    [UseReporter(typeof(QuietReporter))]
+#endif
+    [UseApprovalSubdirectory("Results")]
     public class TaxCalculationServiceTests
     {
         private readonly TaxCalculationService _service;
@@ -36,12 +44,12 @@ namespace AdvancedApprovalTests.UnitTests
 
             _rateServiceMock.Setup(r => r.GetTaxRates(ETaxType.Flat)).Returns(new List<TaxRate>()
             {
-                new TaxRate() { Id = 150, MinAmount = null, MaxAmount = null, Rate = 0.10m }
+                new TaxRate() { Id = 150, MinAmount = 0, MaxAmount = decimal.MaxValue, Rate = 0.10m }
             });
 
             _incomeRepositoryMock.Setup(i => i.GetFiltered(2020)).ReturnsAsync(testRecords);
             
-            var response = _service.CalculateYearlyTax(new List<long>() { 1 }, 2020);
+            var response = _service.CalculateYearlyTaxAsync(new List<long>() { 1 }, 2020, ETaxType.Flat);
 
             ApprovalTests.Approvals.Verify(JsonConvert.SerializeObject(response, Formatting.Indented));
         }

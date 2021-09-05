@@ -7,5 +7,7 @@ namespace AdvancedApprovalTests.Contracts
         public long EmployeeId { get; set; }
 
         public IEnumerable<(decimal Basis, decimal Tax)> CalculatedTax { get; set; }
+
+        public decimal TotalTax { get; set; }
     }
 }
