@@ -8,7 +8,11 @@ namespace AdvancedApprovalTests.BL.Services
     {
         public IEnumerable<TaxRate> GetTaxRates(ETaxType taxType)
         {
-            throw new NotImplementedException();
+            return taxType switch
+            {
+                ETaxType.Flat => new List<TaxRate> { new TaxRate { Id = 1, Rate = 0.13m } },
+                _ => throw new ArgumentOutOfRangeException(nameof(taxType), taxType, null)
+            };
         }
     }
 }
