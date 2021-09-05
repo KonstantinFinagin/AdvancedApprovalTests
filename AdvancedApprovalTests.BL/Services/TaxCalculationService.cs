@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using AdvancedApprovalTests.BL.Services.TaxCalculationStrategies;
 using AdvancedApprovalTests.Contracts;
+using AdvancedApprovalTests.DAL.UnitOfWork;
 
 namespace AdvancedApprovalTests.BL.Services
 {
     public class TaxCalculationService : ITaxCalculationService
     {
         private readonly ITaxRateService _taxRateService;
-        private readonly ITaxCalculationStrategy _taxCalculationStrategy;
+        private readonly IUnitOfWork _uow;
 
-        public TaxCalculationService(ITaxRateService taxRateService, ITaxCalculationStrategy taxCalculationStrategy)
+        public TaxCalculationService(ITaxRateService taxRateService, IUnitOfWork uow)
         {
             _taxRateService = taxRateService;
-            _taxCalculationStrategy = taxCalculationStrategy;
+            _uow = uow;
         }
 
         public IEnumerable<TaxCalculationResponse> CalculateYearlyTax(List<long> customerIds, int year)
