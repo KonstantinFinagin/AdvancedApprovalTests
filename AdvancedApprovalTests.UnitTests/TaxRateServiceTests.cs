@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Linq;
+﻿using System.Linq;
 using AdvancedApprovalTests.BL.Services;
 using AdvancedApprovalTests.Domain;
 using Xunit;
@@ -32,7 +31,7 @@ namespace AdvancedApprovalTests.UnitTests
         {
             var response = _service.GetTaxRates(ETaxType.Progressive).ToList();
 
-            Assert.Equal(4, response.Count);
+            Assert.Equal(5, response.Count);
 
             Assert.Equal(0.00m, response[0].Rate);
             Assert.Equal(0,     response[0].MinAmount);
