@@ -49,7 +49,7 @@ namespace AdvancedApprovalTests.UnitTests
 
             _incomeRepositoryMock.Setup(i => i.GetFiltered(2020)).ReturnsAsync(testRecords);
             
-            var response = _service.CalculateYearlyTaxAsync(new List<long>() { 1 }, 2020, ETaxType.Flat);
+            var response = await _service.CalculateYearlyTaxAsync(new List<long>() { 1 }, 2020, ETaxType.Flat);
 
             ApprovalTests.Approvals.Verify(JsonConvert.SerializeObject(response, Formatting.Indented));
         }
@@ -68,7 +68,7 @@ namespace AdvancedApprovalTests.UnitTests
 
             _incomeRepositoryMock.Setup(i => i.GetFiltered(2020)).ReturnsAsync(testRecords);
 
-            var response = _service.CalculateYearlyTaxAsync(new List<long>() { 1 }, 2020, ETaxType.Progressive);
+            var response = await _service.CalculateYearlyTaxAsync(new List<long>() { 1 }, 2020, ETaxType.Progressive);
 
             ApprovalTests.Approvals.Verify(JsonConvert.SerializeObject(response, Formatting.Indented));
         }
