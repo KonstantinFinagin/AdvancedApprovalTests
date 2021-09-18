@@ -1,35 +1,24 @@
-﻿{
-  "Result": [
-    {
-      "EmployeeId": 1,
-      "CalculatedTax": [
-        {
-          "Item1": 1000.0,
-          "Item2": 0.0
-        },
-        {
-          "Item1": 3999.0,
-          "Item2": 399.90
-        },
-        {
-          "Item1": 14999.0,
-          "Item2": 2999.80
-        },
-        {
-          "Item1": 48202.0,
-          "Item2": 14460.60
-        }
-      ],
-      "TotalTax": 17860.30
-    }
-  ],
-  "Id": 1,
-  "Exception": null,
-  "Status": 5,
-  "IsCanceled": false,
-  "IsCompleted": true,
-  "IsCompletedSuccessfully": true,
-  "CreationOptions": 0,
-  "AsyncState": null,
-  "IsFaulted": false
-}
+﻿[
+  {
+    "EmployeeId": 1,
+    "CalculatedTax": [
+      {
+        "Item1": 1000.0,
+        "Item2": 0.0
+      },
+      {
+        "Item1": 3999.0,
+        "Item2": 399.90
+      },
+      {
+        "Item1": 14999.0,
+        "Item2": 2999.80
+      },
+      {
+        "Item1": 48202.0,
+        "Item2": 14460.60
+      }
+    ],
+    "TotalTax": 17860.30
+  }
+]
