@@ -14,12 +14,12 @@
   {
     "Id": 4,
     "MinAmount": 5001.0,
-    "MaxAmount": 10000.0,
+    "MaxAmount": 20000.0,
     "Rate": 0.10
   },
   {
     "Id": 5,
-    "MinAmount": 10001.0,
+    "MinAmount": 20001.0,
     "MaxAmount": 100000.0,
     "Rate": 0.20
   },
