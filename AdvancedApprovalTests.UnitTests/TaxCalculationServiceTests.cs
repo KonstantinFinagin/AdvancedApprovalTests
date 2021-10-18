@@ -65,7 +65,6 @@ namespace AdvancedApprovalTests.UnitTests
                 new TaxRate() { Id = 3, MinAmount = 5001, MaxAmount = 20000, Rate = 0.20m },
                 new TaxRate() { Id = 4, MinAmount = 20001, MaxAmount = decimal.MaxValue, Rate = 0.30m }
             });
-
             _incomeRepositoryMock.Setup(i => i.GetFiltered(2020)).ReturnsAsync(testRecords);
 
             var response = await _service.CalculateYearlyTaxAsync(new List<long>() { 1 }, 2020, ETaxType.Progressive);
