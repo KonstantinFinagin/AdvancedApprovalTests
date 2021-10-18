@@ -5,6 +5,7 @@ using AdvancedApprovalTests.DAL.Repositories;
 using AdvancedApprovalTests.DAL.UnitOfWork;
 using AdvancedApprovalTests.Domain;
 using AdvancedApprovalTests.UnitTestDataHelper;
+using AdvancedApprovalTests.UnitTests.Extensions;
 using AdvancedApprovalTests.UnitTests.SampleData;
 using ApprovalTests.Namers;
 using ApprovalTests.Reporters;
@@ -58,7 +59,6 @@ namespace AdvancedApprovalTests.UnitTests
         public async Task ShouldCalculateProgressiveTaxCorrectly()
         {
             var testRecords = TestEmployeeIncomeRecordFactory.GetTestIncomeRecords();
-
             _rateServiceMock.Setup(r => r.GetTaxRates(ETaxType.Progressive)).Returns(new List<TaxRate>()
             {
                 new TaxRate() { Id = 1, MinAmount = 0, MaxAmount = 1000, Rate = 0.0m },
@@ -85,7 +85,7 @@ namespace AdvancedApprovalTests.UnitTests
             _rateServiceMock.Setup(r => r.GetTaxRates(ETaxType.Progressive)).Returns(taxRates);
 
             var response = await _service.CalculateYearlyTaxAsync(new List<long>() { 1 }, 2020, ETaxType.Progressive);
-            ApprovalTests.Approvals.Verify(JsonConvert.SerializeObject(response, Formatting.Indented));
+            ApprovalTests.Approvals.Verify(response.ToStringTable());
         }
     }
 }
