@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="TestData\EmployeeIncomeRecordHeaders.csv" />
     <None Include="TestData\TaxRateHeaders.csv" />
     <Compile Include="CsvDataHelper.fs" />
   </ItemGroup>
