@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using System.Threading.Tasks;
 using AdvancedApprovalTests.BL.Services;
 using AdvancedApprovalTests.DAL.Repositories;
 using AdvancedApprovalTests.DAL.UnitOfWork;
 using AdvancedApprovalTests.Domain;
+using AdvancedApprovalTests.UnitTestDataHelper;
+using AdvancedApprovalTests.UnitTests.Extensions;
 using AdvancedApprovalTests.UnitTests.SampleData;
 using ApprovalTests.Namers;
 using ApprovalTests.Reporters;
@@ -71,6 +72,20 @@ namespace AdvancedApprovalTests.UnitTests
             var response = await _service.CalculateYearlyTaxAsync(new List<long>() { 1 }, 2020, ETaxType.Progressive);
 
             ApprovalTests.Approvals.Verify(JsonConvert.SerializeObject(response, Formatting.Indented));
+        }
+
+        [Theory]
+        [InlineData("./SampleData/TaxRates1.csv", "./SampleData/EmployeeIncomes1.csv")]
+        public async Task ShouldCalculateProgressiveTaxCorrectly_DataHelper(string taxRatePath, string employeePath)
+        {
+            var testRecords = CsvDataHelper.GetEmployeeIncomeRecords(employeePath);
+            var taxRates = CsvDataHelper.GetTaxRateItems(taxRatePath);
+
+            _incomeRepositoryMock.Setup(i => i.GetFiltered(2020)).ReturnsAsync(testRecords);
+            _rateServiceMock.Setup(r => r.GetTaxRates(ETaxType.Progressive)).Returns(taxRates);
+
+            var response = await _service.CalculateYearlyTaxAsync(new List<long>() { 1 }, 2020, ETaxType.Progressive);
+            ApprovalTests.Approvals.Verify(response.ToStringTable());
         }
     }
 }

@@ -14,10 +14,20 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AdvancedApprovalTests.BL\AdvancedApprovalTests.BL.csproj" />
+    <ProjectReference Include="..\AdvancedApprovalTests.UnitTestDataHelper\AdvancedApprovalTests.UnitTestDataHelper.fsproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Results\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="SampleData\EmployeeIncomes1.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SampleData\TaxRates1.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
